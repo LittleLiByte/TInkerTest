@@ -13,7 +13,20 @@ dependencies {
     compile "com.android.support:multidex:1.0.1"
 }
 
-
+def gitSha() {
+    try {
+        String gitRev = 'git rev-parse --short HEAD'.execute(null, project.rootDir).text.trim()
+        if (gitRev == null) {
+            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+        }
+        return gitRev
+    } catch (Exception e) {
+        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+    }
+}
+def getTinkerIdValue() {
+    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -86,7 +99,7 @@ tinkerPatch {
     buildConfig {
         //在运行过程中，我们需要验证基准apk包的tinkerId是否等于补丁包的tinkerId。
         // 这个是决定补丁包能运行在哪些基准包上面，一般来说我们可以使用git版本号、versionName等等。
-        tinkerId = "1.0"
+        tinkerId = getTinkerIdValue()
     }
     //用于生成补丁包中的'package_meta.txt'文件
     packageConfig {

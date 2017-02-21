@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void crash(View v) {
         Log.d(TAG, "patch has loaded !!!!");
-
     }
 
     public void cleanPatch(View v) {
