@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -21,7 +20,8 @@ import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TEST = "123";
-    public static final String TAG="MainActivity";
+    public static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadPatch(View v) {
         TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
-        Log.d(TAG, "onClick: load");
     }
 
     public void crash(View v) {
-        Log.d(TAG, "patch has loaded !!!!");
+        int result = 10 / 0;
+        Toast.makeText(this, "result:"+result, Toast.LENGTH_SHORT).show();
     }
 
     public void cleanPatch(View v) {

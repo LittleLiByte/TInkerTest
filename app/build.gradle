@@ -13,20 +13,12 @@ dependencies {
     compile "com.android.support:multidex:1.0.1"
 }
 
-def gitSha() {
-    try {
-        String gitRev = 'git rev-parse --short HEAD'.execute(null, project.rootDir).text.trim()
-        if (gitRev == null) {
-            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
-        }
-        return gitRev
-    } catch (Exception e) {
-        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
-    }
-}
+
 def getTinkerIdValue() {
-    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
+    //versionCode作为TinkerId,这样就不需要git和commit一次
+    return android.defaultConfig.versionCode+""
 }
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
