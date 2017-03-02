@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void crash(View v) {
-        int result = 10 / 0;
+        int result = 10 / 3;
         Toast.makeText(this, "result:"+result, Toast.LENGTH_SHORT).show();
     }
 

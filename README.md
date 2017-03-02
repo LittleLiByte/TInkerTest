@@ -1,8 +1,4 @@
----
-title: Tinker调研
-tags: Tinker,热修复,Android
-grammar_cjkRuby: true
----
+
 
 ## Tinker与其他热修复框架对比
 ![enter description here][1]
@@ -21,7 +17,7 @@ Amigo官方wiki介绍
 > so 文件、资源文件、四大组件的修复，可以对APP全面进行修复
 
  5. **微信的Tinker**是各方面都比较优秀的方案，毕竟经过了几亿微信用户的验证。Tinker的优点上图已经很明确了，而存在的缺陷有以下几方面：
- - Tinker不支持修改AndroidManifest.xml，Tinker不支持新增四大组件；  
+ - Tinker不支持修改AndroidManifest.xml，Tinker不支持新增四大组件；
  - 由于Google Play的开发者条款限制，不建议在GP渠道动态更新代码；
  -  在Android N上，补丁对应用启动时间有轻微的影响；
  -  不支持部分三星android-21机型，加载补丁时会主动抛出"TinkerRuntimeException:checkDexInstall failed"；
@@ -54,7 +50,7 @@ TINKER_VERSION=1.7.7
     compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
     provided("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
 ```
-其中，**tinker-android-anno**用于注解生成application类 
+其中，**tinker-android-anno**用于注解生成application类
 **tinker-android-lib**为tinker的核心库
  4. 在app的gradle文件**app/build.gradle**配置**tinkerPatch task**，下面给出简单的示例：
  //全局信息相关的配置项
@@ -169,7 +165,7 @@ public class TinkerTestApplicarion extends DefaultApplicationLike {
  1. 首先编译运行一次工程，将生成的apk保存备份在除了build/output/apk以外的文件夹，tinker会读取这个旧的apk与新的apk进行比较生成补丁，同时需要修改**app/build.gradle**文件中oldApk的路径。
  2. 修改工程中代码或者资源，然后打开As gradle任务栏，找到**tinker任务**那一项，选择对应的tinker任务运行
 
- ![tinker gradle task][4]
+![enter description here][4]
 然后在build/outputs/tinkerPatch目录下会生成补丁包与相关日志。将补丁包**patch_signed_7zip.apk**push到手机的sdcard目录，此时就可以在工程需要的地方调用tinker 的补丁加载方法了
 
 ``` java
@@ -178,7 +174,7 @@ TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getEx
 因为需要读取sdcard中的文件，因此读写权限必须要配置。
 如果补丁加载成功，可以在logcat中看到以下信息
 
-![补丁成功][5]
+![enter description here][5]
 需要注意的是，tinker默认补丁成功后会杀死应用，因此如果有需要则自定义ResultService继承自**DefaultTinkerResultService**，修改补丁成功后的行为
  3. 重启应用则可以看到打补丁后的效果。
 
@@ -224,11 +220,11 @@ ext {
 更多常见问题请参见[官方wiki][10]
 
 
-  [1]: ./images/1487586483057.jpg "对比"
+  [1]: http://om2bpqram.bkt.clouddn.com/1488428148337.jpg ""
   [2]: https://github.com/fourbrother/Robust
   [3]: https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97
-  [4]: ./images/1487576984119.jpg "tinker gradle task"
-  [5]: ./images/1487578023565.jpg "补丁成功"
+  [4]: http://om2bpqram.bkt.clouddn.com/1488428191026.jpg ""
+  [5]: http://om2bpqram.bkt.clouddn.com/1488428245626.jpg ""
   [6]: https://github.com/Tencent/tinker
   [7]: https://github.com/mcxiaoke/packer-ng-plugin
   [8]: https://github.com/shwenzhang/AndResGuard

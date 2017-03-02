@@ -92,6 +92,7 @@ tinkerPatch {
         //在运行过程中，我们需要验证基准apk包的tinkerId是否等于补丁包的tinkerId。
         // 这个是决定补丁包能运行在哪些基准包上面，一般来说我们可以使用git版本号、versionName等等。
         tinkerId = getTinkerIdValue()
+        applyMapping = "/Users/littlebyte/AndroidStudioProjects/TInkerTest/app/oldApk/mapping.txt"
     }
     //用于生成补丁包中的'package_meta.txt'文件
     packageConfig {
