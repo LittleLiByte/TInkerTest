@@ -1,7 +1,8 @@
 
 
 ## Tinker与其他热修复框架对比
-![enter description here][1]
+
+![enter description here](http://om2bpqram.bkt.clouddn.com/1488428148337.jpg)
 
 **总结**：
 
