@@ -121,7 +121,7 @@ tinkerPatch {
 ### 2. 修改Application类
  1. 修改工程的Application类，使其继承自**DefaultApplicationLike**，然后生成默认的构造方法，并覆盖**onBaseContextAttached**方法，然后添加一个**registerActivityLifecycleCallbacks**方法，同时在自己的Application类上加上以下注解：
 
-``` nix
+``` java
  @DefaultLifeCycle(application = "com.cn21.tinkertest.MyApplication",
         flags = ShareConstants.TINKER_ENABLE_ALL,
         loadVerifyFlag = false)
@@ -221,11 +221,11 @@ ext {
 更多常见问题请参见[官方wiki][10]
 
 
-  [1]: http://om2bpqram.bkt.clouddn.com/1488428148337.jpg ""
+  [1]: http://om2bpqram.bkt.clouddn.com/1488428148337.jpg
   [2]: https://github.com/fourbrother/Robust
   [3]: https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97
-  [4]: http://om2bpqram.bkt.clouddn.com/1488428191026.jpg ""
-  [5]: http://om2bpqram.bkt.clouddn.com/1488428245626.jpg ""
+  [4]: http://om2bpqram.bkt.clouddn.com/1488428191026.jpg
+  [5]: http://om2bpqram.bkt.clouddn.com/1488428245626.jpg
   [6]: https://github.com/Tencent/tinker
   [7]: https://github.com/mcxiaoke/packer-ng-plugin
   [8]: https://github.com/shwenzhang/AndResGuard
